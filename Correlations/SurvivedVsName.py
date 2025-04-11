@@ -49,11 +49,34 @@ print('P Value: ',pValue)
 #| evidence of a true association between the variables.        |
 #+--------------------------------------------------------------+
 
+# --------------------------------------------------------------------------------------
+
 
 # Many of the 'Name' datapoints include a parentheses with a different name, 
 # we will find the correlation between the names and the 'Survived' status
 # without the parentheses information
 
-count = df['Name'].apply(lambda x: '(' in x and ')' in x).sum()
 
-print(count)
+
+df['Name'] = df['Name'].str.replace(r'\(.*?\)', '', regex=True).str.strip()
+
+df['Length'] =  df['Name'].apply(len)
+binaryVar = df['Survived']
+contVar = df['Length']
+
+corr, pValue = pbs(binaryVar, contVar)
+
+print('Correlation: ',corr)
+print('P Value: ',pValue)
+
+#+--------------------------------------------------------------+
+#| Correlation:  0.09937304899666002                            |
+#|                                                              |
+#|                                                              |
+#| P Value:  0.002983462889232356                               |
+#|                                                              |
+#+--------------------------------------------------------------+
+
+
+
+print(df)
