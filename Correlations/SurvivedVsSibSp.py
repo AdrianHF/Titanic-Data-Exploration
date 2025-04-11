@@ -37,3 +37,11 @@ correlation, pValue = pbs(df['Survived'], df['SibSp'])
 print(correlation)
 
 print(pValue)
+
+
+# +-----------------------+
+# |                       |
+# | -0.03532249888573556  |
+# | 0.29224392869829435   |
+# |                       |
+# +-----------------------+
