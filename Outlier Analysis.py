@@ -9,6 +9,9 @@ df = pd.read_csv('train.csv')
 df = df[['Survived','Embarked','Fare','Pclass','Sex']]
 
 
+newDF = df['Embarked']
+newDF.dropna(inplace=True)
+
 df.dropna(inplace=True)
 
 df['Sex'] = df['Sex'].map({'male':1,'female':2})
@@ -23,14 +26,13 @@ df['Q'] = df['Embarked'].map({'S':0,'C':0,'Q':1})
 df = df[['S','C','Q','Survived','Sex','Pclass','Fare']]
 
 
-print(df['Fare'].median())
-
-df['Group'] = pd.cut(df['Fare'], bins = 80)
-
-matrix = pd.crosstab(df['Survived'],df['Fare'])
-
-plt.boxplot(matrix, patch_artist=True)
 
 
 
+matrix = pd.crosstab(newDF,df['Survived'])
+
+
+print(matrix )
+
+plt.boxplot(matrix)
 plt.show()
