@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score, classification_report
 
 df = pd.read_csv('train.csv')
 
-df = df[['Survived','Embarked','Fare','Pclass','Sex','Name']]
+df = df[['Survived','Embarked','Fare','Pclass','Sex']]
 
 
 df.dropna(inplace=True)
