@@ -36,9 +36,12 @@ print(df)
 x = df[['S','C','Q','Sex','Fare']]
 y = df['Survived']
 
-X_train, X_test, y_train, y_test = train_test_split(
-    x, y, train_size=0.75, random_state=42
-)
+model = LogisticRegression()
+model.fit(x,y)
 
+# Predecir en datos de prueba
+#y_pred = model.predict()
+
+# Evaluar el rendimiento del modelo
 
 #Logistic Regression
